@@ -6,7 +6,7 @@ const {
 const pino = require("pino");
 const useMongoDBAuthState = require("./mongoAuthState");
 const makeWASocket = require("@whiskeysockets/baileys").default;
-const mongoURL = "mongodb+srv://spike:spikeinc@cluster0.7atsned.mongodb.net/?retryWrites=true&w=majority";
+const mongoURL = "mongodb+srv://venom:venom@venom.exnf9us.mongodb.net/?retryWrites=true&w=majority";
 const { MongoClient } = require("mongodb");
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
@@ -17,12 +17,11 @@ async function connectionMaha() {
     useUnifiedTopology: true,
   });
   await mongoClient.connect();
-   const { state, saveCreds } = await useMultiFileAuthState("auth_info_baileys");
-/*  const collection = mongoClient
+   //const { state, saveCreds } = await useMultiFileAuthState("auth_info_baileys");
+const collection = mongoClient
     .db("whatsapp_api")
     .collection("auth_info_baileys");
   const { state, saveCreds } = await useMongoDBAuthState(collection);
-*/  
 const sock = makeWASocket({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
