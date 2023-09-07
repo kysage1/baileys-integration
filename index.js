@@ -17,11 +17,12 @@ async function connectionMaha() {
     useUnifiedTopology: true,
   });
   await mongoClient.connect();
-   //const { state, saveCreds } = await useMultiFileAuthState("auth_info_baileys");
-const collection = mongoClient
+  const { state, saveCreds } = await useMultiFileAuthState("auth_info_baileys");
+/*const collection = mongoClient
     .db("whatsapp_api")
     .collection("auth_info_baileys");
   const { state, saveCreds } = await useMongoDBAuthState(collection);
+*/
 const sock = makeWASocket({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
